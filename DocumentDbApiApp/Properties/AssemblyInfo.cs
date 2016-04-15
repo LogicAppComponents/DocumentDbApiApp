@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DocumentDbApiApp")]
+[assembly: AssemblyTitle("DocumentDBConnector")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DocumentDbApiApp")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyProduct("DocumentDBConnector")]
+[assembly: AssemblyCopyright("Copyright © Ibiz-Solutions 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4d20229c-fc96-4b53-b205-4fdcc47db05e")]
+[assembly: Guid("dfabc68a-e05b-4e16-a836-11727b96d796")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -5,11 +5,12 @@ using System.Web.Http.Description;
 using Swashbuckle.Application;
 using Swashbuckle.Swagger;
 using WebActivatorEx;
-using DocumentDbApiApp;
+using DocumentDBApiApp;
+
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
-namespace DocumentDbApiApp
+namespace DocumentDBApiApp
 {
     public class SwaggerConfig
     {
@@ -36,7 +37,7 @@ namespace DocumentDbApiApp
                         // hold additional metadata for an API. Version and title are required but you can also provide
                         // additional fields by chaining methods off SingleApiVersion.
                         //
-                        c.SingleApiVersion("v1", "DocumentDbApiApp");
+                        c.SingleApiVersion("v1", "DocumentDBConnector");
 
                         // If your API has multiple versions, use "MultipleApiVersions" instead of "SingleApiVersion".
                         // In this case, you must provide a lambda that tells Swashbuckle which actions should be
@@ -123,7 +124,7 @@ namespace DocumentDbApiApp
                         // Swagger docs and UI. However, if you have multiple types in your API with the same class name, you'll
                         // need to opt out of this behavior to avoid Schema Id conflicts.
                         //
-                        //c.UseFullTypeNameInSchemaIds();
+                        c.UseFullTypeNameInSchemaIds();
 
                         // In accordance with the built in JsonSerializer, Swashbuckle will, by default, describe enums as integers.
                         // You can change the serializer behavior by configuring the StringToEnumConverter globally or for a given
@@ -192,7 +193,7 @@ namespace DocumentDbApiApp
                         // strings as the possible choices. You can use this option to change these to something else,
                         // for example 0 and 1.
                         //
-                        //c.BooleanValues(new[] { "0", "1" });
+                        c.BooleanValues(new[] { "0", "1" });
 
                         // Use this option to control how the Operation listing is displayed.
                         // It can be set to "None" (default), "List" (shows operations for each resource),
