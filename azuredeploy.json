@@ -49,9 +49,8 @@
       			"metadata": {
         			"description": "The secret for the API app. This value must be a base64-encoded string. It should be a random string with 64 characters, and consist of only integers and lowercase characters. "
       }
-    },
-		}
-	},
+    }
+		},
 	"variables": 
 	{
 		"databaseAccountTier": "Standard",
