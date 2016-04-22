@@ -40,10 +40,7 @@
       			"value": "NotSecureSecret"
 		 },
 		 "location": {
-      "value": "West US"
-    },
-     "hostingPlanId": {
-      "value": "ExistingID"
+      "value": "West Europe"
     }
 	}
 }
