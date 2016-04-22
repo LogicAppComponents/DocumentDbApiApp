@@ -61,6 +61,18 @@
       }
     },
     {
+    "apiVersion": "2014-06-01",
+    "name": "[parameters('svcPlanName')]",
+    "type": "Microsoft.Web/serverfarms",
+    "location": "[resourceGroup().location]",
+    "tags": {
+        "displayName": "AppServicePlan"
+    },
+    "properties": {
+        "name": "[parameters('svcPlanName')]"
+    }
+},
+    {
       "apiVersion": "2014-06-01",
       "name": "[parameters('siteName')]",
       "type": "Microsoft.Web/Sites",
