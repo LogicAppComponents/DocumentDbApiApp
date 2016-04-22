@@ -11,6 +11,8 @@ Api App handling connection with DocumentDB this will handle communcation with R
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>    This deploys via Azure Portal
 
+[AZURE.INCLUDE [app-service-logic-deploy-parameters](https://github.com/LogicAppComponents/DocumentDbApiApp/blob/master/azuredeploy.parameters.json)]
+
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/?repository=https://github.com/LogicAppComponents/DocumentDbApiApp/blob/master/azuredeploy.json)
 This deploys via Azuredeploy.net GUI
 
