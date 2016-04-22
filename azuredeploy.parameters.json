@@ -9,7 +9,7 @@
 			"value": "S1"
 		},
 		"svcPlanSku": {
-			"value": "Small"
+			"value": "Standard"
 		},
 		"appSvcPlanName": {
 			"value": "CommonLogicTestAppPlan01"
