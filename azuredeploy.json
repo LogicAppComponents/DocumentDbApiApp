@@ -118,6 +118,7 @@
             "type": "Microsoft.AppService/apiapps",
             "apiVersion": "2015-03-01-preview",
             "name": "[parameters('apiAppName')]",
+           "location": "[resourceGroup().location]",
             "resources": [
                 {
                     "type": "providers/links",
