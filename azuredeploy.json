@@ -38,18 +38,6 @@
 				"description": "The name of the Api App."
 			}
 			},
-		"gatewayName": {
-      			"type": "string",
-      			"metadata": {
-        			"description": "The name of the existing gateway. The API app gets registered to this gateway."
-      			}
-      			},
-      		"apiAppSecret": {
-      			"type": "securestring",
-      			"metadata": {
-        			"description": "The secret for the API app. This value must be a base64-encoded string. It should be a random string with 64 characters, and consist of only integers and lowercase characters. "
-      			}
-    			},
     			"location": {
       			"type": "string",
       			"metadata": {
@@ -116,7 +104,6 @@
             ],
             "properties": {
                 "name": "[parameters('apiAppName')]",
-                "gatewaySiteName": "[parameters('gatewayName')]",
                "serverFarmId": "[parameters('appSvcPlanName')]",
                 "siteConfig": {
                     "appSettings": [
@@ -163,9 +150,6 @@
                 },
                 "host": {
                     "resourceName": "[parameters('apiAppName')]"
-                },
-                "gateway": {
-                    "resourceName": "[parameters('gatewayName')]"
                 }
             }
         }
