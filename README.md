@@ -9,8 +9,7 @@ Api App handling connection with DocumentDB this will handle communcation with R
 |database	 |Name of the databse to connect to			     |String|Required   |
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https://raw.githubusercontent.com/LogicAppComponents/DocumentDbApiApp/master/azuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
-    This deploys via Azure Portal
-</a>
+</a>    This deploys via Azure Portal
 
 <a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/LogicAppComponents/DocumentDbApiApp/master/azuredeploy.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
