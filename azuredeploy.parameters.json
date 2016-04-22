@@ -38,9 +38,6 @@
     		},
     			"apiAppSecret": {
       			"value": "NotSecureSecret"
-		 },
-		 "location": {
-      "value": "West Europe"
-    }
+		 }
 	}
 }
