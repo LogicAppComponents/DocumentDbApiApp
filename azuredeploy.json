@@ -11,6 +11,25 @@
     "siteLocation": {
       "type": "string"
     },
+     "gatewayName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the gateway."
+      }
+    },
+    "svcPlanName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the App Service plan to create for hosting the logic app."
+      }
+    },
+    "gatewayToApiAppSecret": {
+      "defaultValue": "0000000000000000000000000000000000000000000000000000000000000000",
+      "type": "securestring",
+      "metadata": {
+        "description": "The secret for the API app."
+      }
+    },
     "endpoint": {
       "type": "string"
     },
