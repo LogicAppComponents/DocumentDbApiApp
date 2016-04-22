@@ -5,6 +5,12 @@
 		"databaseAccountName": {
 			"value": "commonlogic-test"
 		},
+		"svcPlanSize": {
+			"value": "F1"
+		},
+		"svcPlanSku": {
+			"value": "Free"
+		},
 		"appSvcPlanName": {
 			"value": "CommonLogicTestAppPlan01"
 		},
