@@ -32,6 +32,12 @@
 				"description": "The pricing tier of the App Service plan."
 			}
 		},
+			"gatewayName": {
+      			"type": "string",
+      			"metadata": {
+        			"description": "The name of the existing gateway. The API app gets registered to this gateway."
+      			}
+      			},
 		"apiAppName": {
 			"type": "string",
 			"metadata": {
@@ -85,6 +91,7 @@
             ],
             "properties": {
                 "name": "[parameters('apiAppName')]",
+                "gatewaySiteName": "[parameters('gatewayName')]",
                "serverFarmId": "[parameters('appSvcPlanName')]",
                 "siteConfig": {
                     "appSettings": [
@@ -128,6 +135,9 @@
                 },
                 "host": {
                     "resourceName": "[parameters('apiAppName')]"
+                },
+                 "gateway": {
+                    "resourceName": "[parameters('gatewayName')]"
                 }
             }
         }
