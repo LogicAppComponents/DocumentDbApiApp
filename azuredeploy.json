@@ -122,9 +122,6 @@
                     }
                 }
             ],
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites/siteextensions', parameters('apiAppName'), variables('packageId'))]"
-            ],
             "properties": {
                 "package": {
                     "id": "[variables('packageId')]"
