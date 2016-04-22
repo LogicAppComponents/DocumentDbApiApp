@@ -4,18 +4,21 @@
 	"parameters": {
 		"databaseAccountName": {
 			"type": "string",
+			"defaultValue": "commonlogic-test",
 			"metadata": {
 				"description": "The DocumentDB database account name."
 			}
 		},
 		"dataBase": {
 			"type": "string",
+			"defaultValue": "data_entity_catalog",
 			"metadata": {
 				"description": "Database name"
 			}
 		},
 		"appSvcPlanName": {
 			"type": "string",
+			"defaultValue": "CommonLogicTestAppPlan01",
 			"metadata": {
 				"description": "The name of the App Service Plan that will host the Web App."
 			}
