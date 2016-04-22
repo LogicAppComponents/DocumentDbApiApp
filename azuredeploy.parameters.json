@@ -6,10 +6,10 @@
 			"value": "commonlogic-test"
 		},
 		"svcPlanSize": {
-			"value": "F1"
+			"value": "S1"
 		},
 		"svcPlanSku": {
-			"value": "Free"
+			"value": "Small"
 		},
 		"appSvcPlanName": {
 			"value": "CommonLogicTestAppPlan01"
