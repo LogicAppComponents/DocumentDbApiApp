@@ -68,14 +68,59 @@
 		"name": "[parameters('webAppName')]",
 		"location": "[resourceGroup().location]",
 		"dependsOn": [
-			"[concat('Microsoft.Web/serverFarms/', parameters('appSvcPlanName'))]"
+			"[resourceId('Microsoft.AppService/gateways', parameters('gatewayName'))]"
 		],
+		 "resources": [
+                {
+                    "type": "siteextensions",
+                    "tags": {
+                        "displayName": "APIAppExtension"
+                    },
+                    "apiVersion": "2015-04-01",
+                    "name": "[variables('$packageId')]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/sites', parameters('apiAppName'))]"
+                    ],
+                    "properties": {
+                        "type": "WebRoot",
+                        "feed_url": "[variables('$nugetFeed')]"
+                    }
+                },
+                {
+                    "type": "providers/links",
+                    "apiVersion": "2015-01-01",
+                    "name": "Microsoft.Resources/apiApp",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/sites', parameters('apiAppName'))]"
+                    ],
+                    "properties": {
+                        "targetId": "[resourceId('Microsoft.AppService/apiapps', parameters('apiAppName'))]"
+                    }
+                }
+            ],
 		"properties": {
 			"name": "[parameters('webAppName')]",
+			"gatewaySiteName": "[parameters('gatewayName')]",
 			"serverFarmId": "[parameters('appSvcPlanName')]",
 			"siteConfig": {
 				"phpVersion": "off",
 				"appSettings": [{
+                            		"name": "EMA_MicroserviceId",
+		                            "value": "[parameters('apiAppName')]"
+                		 },
+                		  {
+                            		"name": "EMA_Secret",
+                            		"value": "[parameters('gatewayToAPIappSecret')]"
+                		 },
+                		 {
+                        	         "name": "EMA_RuntimeUrl",
+                		         "value": "[concat('https://', reference(resourceId('Microsoft.Web/sites', parameters('gatewayName'))).hostNames[0])]"
+                		  },
+                		 {
+                        		  "name": "WEBSITE_START_SCM_ON_SITE_CREATION",
+                        		  "value": "1"
+                        	},
+			          {
 					"Name": "endpoint",
 					"Value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', parameters('databaseAccountName'))).documentEndpoint]"
 				}, {
