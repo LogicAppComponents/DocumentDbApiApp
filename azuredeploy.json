@@ -51,7 +51,10 @@
       			}
     			},
     			"location": {
-      			"value": "West US"
+      			"type": "string",
+      			"metadata": {
+        			"description": "Location"
+      			}
     			}
 		},
 	"variables": 
