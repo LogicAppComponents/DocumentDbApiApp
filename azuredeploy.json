@@ -55,22 +55,7 @@
       			"metadata": {
         			"description": "Location"
       			}
-    			},
-    			"hostingPlanId": {
-      "type": "string",
-      "metadata": {
-        "description": "The identifier of the existing hosting plan."
-      }
-    },
-    "hostingPlanSettings": {
-      "type": "Object",
-      "defaultValue": {
-        "hostingEnvironment": ""
-      },
-      "metadata": {
-        "description": "The settings of the existing hosting plan."
-      }
-    }
+    			}
 		},
 	"variables": 
 	{
@@ -132,30 +117,14 @@
             "properties": {
                 "name": "[parameters('apiAppName')]",
                 "gatewaySiteName": "[parameters('gatewayName')]",
-                "serverFarmId": "[parameters('hostingPlanId')]",
-                "hostingEnvironment": "[parameters('hostingPlanSettings').hostingEnvironment]",
+               "serverFarmId": "[parameters('appSvcPlanName')]",
                 "siteConfig": {
                     "appSettings": [
-                        {
-                            "name": "EMA_MicroserviceId",
-                            "value": "[parameters('apiAppName')]"
-                        },
-                        {
-                            "name": "EMA_Secret",
-                            "value": "[parameters('apiAppSecret')]"
-                        },
-                        {
-                            "name": "EMA_RuntimeUrl",
-                            "value": "[concat('https://', parameters('gatewayName'), '.azurewebsites.net')]"
-                        },
-                        {
-                            "name": "WEBSITE_START_SCM_ON_SITE_CREATION",
-                            "value": "1"
-                        },
-                        {
+                		 {
 					"Name": "endpoint",
 					"Value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', parameters('databaseAccountName'))).documentEndpoint]"
-				}, {
+				}, 
+				{
 					"Name": "authKey",
 					"Value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('databaseAccountName')), '2015-04-08').primaryMasterKey]"
 				},
