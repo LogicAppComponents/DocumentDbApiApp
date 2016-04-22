@@ -3,19 +3,10 @@
 	"contentVersion": "1.0.0.0",
 	"parameters": {
 		"databaseAccountName": {
-			"value": "GEN-UNIQUE"
+			"value": "commonlogic-test"
 		},
 		"appSvcPlanName": {
-			"value": "GEN-UNIQUE"
+			"value": "CommonLogicTestAppPlan01"
 		},
-		"svcPlanSize": {
-			"value": "F1"
-		},
-		"svcPlanSku": {
-			"value": "Free"
-		},
-		"webAppName": {
-			"value": "GEN-UNIQUE"
-		}
 	}
 }
