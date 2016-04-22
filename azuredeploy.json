@@ -88,15 +88,15 @@
 			"siteConfig": {
 				"phpVersion": "off",
 				"appSettings": [{
-					"Name": "DOCUMENTDB_ENDPOINT",
+					"Name": "endpoint",
 					"Value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', parameters('databaseAccountName'))).documentEndpoint]"
 				}, {
-					"Name": "DOCUMENTDB_PRIMARY_KEY",
+					"Name": "authKey",
 					"Value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('databaseAccountName')), '2015-04-08').primaryMasterKey]"
 				},
 				{
-					"Name": "DOCUMENTDB_DATABASE",
-					"Value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', parameters('databaseAccountName'))).dataBase]"
+					"Name": "database",
+					"Value": "[parameters('dataBase')]"
 				}
 				]
 			}
