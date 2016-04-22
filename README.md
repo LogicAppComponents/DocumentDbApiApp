@@ -8,7 +8,7 @@ Api App handling connection with DocumentDB this will handle communcation with R
 |authKey	 |Primary or secudnary API key to the Document DB instnace   |String|Required   |
 |database	 |Name of the databse to connect to			     |String|Required   |
 
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/?repository=https://raw.githubusercontent.com/LogicAppComponents/DocumentDbApiApp/master/azuredeploy.json)
 <a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/LogicAppComponents/DocumentDbApiApp/master/azuredeploy.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
