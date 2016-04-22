@@ -2,6 +2,9 @@
 	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
 	"contentVersion": "1.0.0.0",
 	"parameters": {
+		"webAppName": {
+		"type": "string",
+		},
 		"databaseAccountName": {
 			"type": "string",
 			"defaultValue": "commonlogic-test"
@@ -30,8 +33,11 @@
 			],
 			"defaultValue": "Standard",
 		},
-		"webAppName": {
-			"type": "string",
-		}
+			"gatewayName": {
+      			"value": "ExistingGateway"
+    		},
+    			"apiAppSecret": {
+      			"value": "NotSecureSecret"
+		 },
 	}
 }
