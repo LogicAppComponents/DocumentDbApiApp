@@ -46,6 +46,10 @@
       "type": "string"
     }
   },
+    "variables": {
+    "$packageId": "Microsoft.ApiApp",
+    "$nugetFeed": "http://apiapps-preview.nuget.org/api/v2/"
+  },
   "resources": [
     {
       "apiVersion": "2014-06-01",
