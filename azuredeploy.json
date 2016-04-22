@@ -30,9 +30,14 @@
       ],
       "defaultValue": "0"
     },
-    "someAppSetting": {
-      "type": "string",
-      "defaultValue": "Test App Setting Value"
+    "endpoint": {
+      "type": "string"
+    },
+     "authKey": {
+      "type": "string"
+    },
+     "database": {
+      "type": "string"
     },
     "repoUrl": {
       "type": "string"
