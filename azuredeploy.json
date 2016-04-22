@@ -14,43 +14,11 @@
         "description": "The name of the App Service plan to use for hosting the web app."
       }
     },
-    "sku": {
-      "type": "string",
-      "allowedValues": [
-        "Free",
-        "Shared",
-        "Basic",
-        "Standard"
-      ],
-      "defaultValue": "Free",
-      "metadata": {
-        "description": "The pricing tier for the hosting plan."
-      }
-    },
-    "workerSize": {
-      "type": "string",
-      "allowedValues": [
-        "0",
-        "1",
-        "2"
-      ],
-      "defaultValue": "0",
-      "metadata": {
-        "description": "The instance size of the hosting plan (small, medium, or large)."
-      }
-    },
     "repoURL": {
       "type": "string"
-      "metadata": {
-        "description": "The URL for the GitHub repository that contains the project to deploy."
-      }
     },
     "branch": {
-      "type": "string",
-      "defaultValue": "master",
-      "metadata": {
-        "description": "The branch of the GitHub repository to use."
-      }
+      "type": "string"
     }
   },
   "resources": [
