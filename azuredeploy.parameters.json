@@ -3,16 +3,35 @@
 	"contentVersion": "1.0.0.0",
 	"parameters": {
 		"databaseAccountName": {
-			"value": "commonlogic-test"
+			"type": "string",
+			"defaultValue": "commonlogic-test"
 		},
-		"svcPlanSize": {
-			"value": "S1"
-		},
-		"svcPlanSku": {
-			"value": "Standard"
+		"dataBase": {
+			"type": "string",
+			"defaultValue": "data_entity_catalog",
 		},
 		"appSvcPlanName": {
-			"value": "CommonLogicTestAppPlan01"
+			"type": "string",
+			"defaultValue": "CommonLogicTestAppPlan01"
 		},
+			"svcPlanSize": {
+			"type": "string",
+			"defaultValue": "S1",
+
+		},
+			"svcPlanSku": {
+			"type": "string",
+			"allowedValues": [
+				"Free",
+				"Shared",
+				"Basic",
+				"Standard",
+				"Premium"
+			],
+			"defaultValue": "Standard",
+		},
+		"webAppName": {
+			"type": "string",
+		}
 	}
 }
