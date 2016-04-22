@@ -55,7 +55,22 @@
       			"metadata": {
         			"description": "Location"
       			}
-    			}
+    			},
+    			"hostingPlanId": {
+      "type": "string",
+      "metadata": {
+        "description": "The identifier of the existing hosting plan."
+      }
+    },
+    "hostingPlanSettings": {
+      "type": "Object",
+      "defaultValue": {
+        "hostingEnvironment": ""
+      },
+      "metadata": {
+        "description": "The settings of the existing hosting plan."
+      }
+    }
 		},
 	"variables": 
 	{
