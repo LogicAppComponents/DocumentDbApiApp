@@ -41,6 +41,9 @@
 		 },
 		 "location": {
       "value": "West US"
+    },
+     "hostingPlanId": {
+      "value": "ExistingID"
     }
 	}
 }
