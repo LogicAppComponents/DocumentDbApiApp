@@ -32,12 +32,7 @@
 				"description": "The pricing tier of the App Service plan."
 			}
 		},
-			"gatewayName": {
-      			"type": "string",
-      			"metadata": {
-        			"description": "The name of the existing gateway. The API app gets registered to this gateway."
-      			}
-      			},
+	
 		"apiAppName": {
 			"type": "string",
 			"metadata": {
