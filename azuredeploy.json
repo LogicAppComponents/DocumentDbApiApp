@@ -91,7 +91,6 @@
             ],
             "properties": {
                 "name": "[parameters('apiAppName')]",
-                "gatewaySiteName": "[parameters('gatewayName')]",
                "serverFarmId": "[parameters('appSvcPlanName')]",
                 "siteConfig": {
                     "appSettings": [
@@ -135,9 +134,6 @@
                 },
                 "host": {
                     "resourceName": "[parameters('apiAppName')]"
-                },
-                 "gateway": {
-                    "resourceName": "[parameters('gatewayName')]"
                 }
             }
         }
