@@ -86,8 +86,16 @@
           "properties": {
             "appSettings": [
               {
-                "name": "someAppSetting",
-                "value": "[parameters('someAppSetting')]"
+                "name": "endpoint",
+                "value": "[parameters('endpoint')]"
+              },
+              {
+                "name": "authKey",
+                "value": "[parameters('authKey')]"
+              },
+              {
+                "name": "database",
+                "value": "[parameters('database')]"
               }
             ]
           }
