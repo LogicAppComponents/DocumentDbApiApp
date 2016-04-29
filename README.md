@@ -1,13 +1,13 @@
 ##Description
 Api App handling connection with DocumentDB this will handle communcation with REST API and used with Logic Apps.
+Both the AuthKey (primary API key) and the Endpoint URL for the Document DB instance is retrieved in the template.
 
 
 | Parameter      | Description                                               | Type | Validation|
 | ---------------|-----------------------------------------------------------|------|-----------|
-|endpoint	 |Endpoint URL for the Document DB instance		     |String|Required   |
-|authKey	 |Primary or secondary API key to the Document DB instance   |String|Required   |
 |database	 |Name of the database to connect to			     |String|Required   |
-
+<!--|endpoint	 |Endpoint URL for the Document DB instance		     |String|Required   |
+|authKey	 |Primary or secondary API key to the Document DB instance   |String|Required   |-->
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FLogicAppComponents%2FDocumentDbApiApp%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>    This deploys via Azure Portal
