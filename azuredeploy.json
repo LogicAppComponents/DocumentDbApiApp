@@ -22,12 +22,21 @@
 		},
 			"svcPlanSize": {
 			"type": "string",
+			"defaultValue": "S1",
 			"metadata": {
 				"description": "The instance size of the App Service Plan."
 			}
 		},
 			"svcPlanSku": {
 			"type": "string",
+			"allowedValues": [
+				"Free",
+				"Shared",
+				"Basic",
+				"Standard",
+				"Premium"
+			],
+			"defaultValue": "Standard",
 			"metadata": {
 				"description": "The pricing tier of the App Service plan."
 			}
