@@ -1,17 +1,26 @@
 ##Description
 Api App handling connection with DocumentDB this will handle communcation with REST API and used with Logic Apps.
 Both the AuthKey (primary API key) and the Endpoint URL for the Document DB instance is retrieved in the template.
-
-
+``` Git
+{
+	"Name": "endpoint",
+	"Value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', parameters('databaseAccountName'))).documentEndpoint]"
+	}, 
+	{
+	"Name": "authKey",
+	"Value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('databaseAccountName')), '2015-04-08').primaryMasterKey]"
+}
+```
 | Parameter      | Description                                               | Type | Validation|
 | ---------------|-----------------------------------------------------------|------|-----------|
 |database	 |Name of the database to connect to			     |String|Required   |
-<!--|endpoint	 |Endpoint URL for the Document DB instance		     |String|Required   |
-|authKey	 |Primary or secondary API key to the Document DB instance   |String|Required   |-->
+
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FLogicAppComponents%2FDocumentDbApiApp%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>    This deploys via Azure Portal
 
+<!--|endpoint	 |Endpoint URL for the Document DB instance		     |String|Required   |
+|authKey	 |Primary or secondary API key to the Document DB instance   |String|Required   |-->
 <!--[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/?repository=https://github.com/LogicAppComponents/DocumentDbApiApp/blob/master/azuredeploy.json)
 This deploys via Azuredeploy.net GUI -->
 
