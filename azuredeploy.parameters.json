@@ -7,15 +7,15 @@
 		},
 		"databaseAccountName": {
 			"type": "string",
-			"defaultValue": "commonlogic-test"
+			"defaultValue": "databaseAccountName"
 		},
 		"dataBase": {
 			"type": "string",
-			"defaultValue": "data_entity_catalog",
+			"defaultValue": "dataBaseName",
 		},
 		"appSvcPlanName": {
 			"type": "string",
-			"defaultValue": "CommonLogicTestAppPlan01"
+			"defaultValue": "appSvcPlanName"
 		},
 			"svcPlanSize": {
 			"type": "string",
