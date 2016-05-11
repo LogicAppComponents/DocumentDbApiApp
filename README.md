@@ -11,9 +11,12 @@ Both the AuthKey (primary API key) and the Endpoint URL for the Document DB inst
 	"Value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('databaseAccountName')), '2015-04-08').primaryMasterKey]"
 }
 ```
-| Parameter      | Description                                               | Type | Validation|
-| ---------------|-----------------------------------------------------------|------|-----------|
-|database	 |Name of the database to connect to			     |String|Required   |
+| Parameter      	| Description                                               | Type | Validation|
+| ----------------------|-----------------------------------------------------------|------|-----------|
+|Database	 	|Name of the database to connect to			     |String|Required   |
+|DatabaseAccountName	|Name of the database to connect to		     |String|Required   |
+|AppSvcPlanName	 	|Name of the database to connect to			     |String|Required   |
+|ApiAppName	 	|Name of the database to connect to			     |String|Required   |
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FLogicAppComponents%2FDocumentDbApiApp%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
