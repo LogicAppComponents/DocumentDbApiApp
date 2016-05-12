@@ -53,7 +53,6 @@
 	{},
  "resources": [
 {
-            "comments": "Generaliserad från resursen /subscriptions/790bb072-f558-4ad6-85cf-84bcb31ddf07/resourceGroups/CommonLogic/providers/Microsoft.Web/sites/AA015-Connector-DocumentDB-Prod.",
             "type": "Microsoft.Web/sites",
             "kind": "api",
             "name": "[parameters('apiAppName')]",
