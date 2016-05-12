@@ -14,7 +14,7 @@
 				"description": "Database name"
 			}
 		},
-		"appSvcPlanName": {
+		"appSvcPlanName2": {
 			"type": "string",
 			"metadata": {
 				"description": "The name of the App Service Plan that will host the Web App."
