@@ -20,7 +20,11 @@ Both the AuthKey (primary API key) and the Endpoint URL for the Document DB inst
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FLogicAppComponents%2FDocumentDbApiApp%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
-</a>    This deploys via Azure Portal
+</a>    This deploys via Azure Portal (WEB API APP)
+
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FLogicAppComponents%2FDocumentDbApiApp%2Fmaster%2FazuredeployApiApp.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
+</a>    This deploys via Azure Portal (API APP)
 
 <!--|endpoint	 |Endpoint URL for the Document DB instance		     |String|Required   |
 |authKey	 |Primary or secondary API key to the Document DB instance   |String|Required   |-->
