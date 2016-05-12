@@ -14,7 +14,7 @@
 				"description": "Database name"
 			}
 		},
-		"appSvcPlanName2": {
+		"appSvcPlanName": {
 			"type": "string",
 			"metadata": {
 				"description": "The name of the App Service Plan that will host the Web App."
@@ -56,40 +56,31 @@
             "comments": "Generaliserad från resursen /subscriptions/790bb072-f558-4ad6-85cf-84bcb31ddf07/resourceGroups/CommonLogic/providers/Microsoft.Web/sites/AA015-Connector-DocumentDB-Prod.",
             "type": "Microsoft.Web/sites",
             "kind": "api",
-            "name": "[parameters('sites_AA015_Connector_DocumentDB_Prod_name')]",
+            "name": "[parameters('apiAppName')]",
             "apiVersion": "2015-08-01",
             "location": "West Europe",
-            "tags": {
-                "hidden-related:/subscriptions/790bb072-f558-4ad6-85cf-84bcb31ddf07/resourceGroups/CommonLogic/providers/Microsoft.Web/serverfarms/CommonLogicAppPlan01": "empty",
-                "description": "Api App for read/write to DocumentDB (Production)"
-            },
             "properties": {
-                "name": "[parameters('sites_AA015_Connector_DocumentDB_Prod_name')]",
-                "hostNames": [
-                    "aa015-connector-documentdb-prod.azurewebsites.net"
-                ],
-                "enabledHostNames": [
-                    "aa015-connector-documentdb-prod.azurewebsites.net",
-                    "aa015-connector-documentdb-prod.scm.azurewebsites.net"
-                ],
-                "hostNameSslStates": [
-                    {
-                        "name": "[concat(parameters('sites_AA015_Connector_DocumentDB_Prod_name'),'aa015-connector-documentdb-prod.azurewebsites.net')]",
-                        "sslState": 0,
-                        "thumbprint": null,
-                        "ipBasedSslState": 0
-                    },
-                    {
-                        "name": "[concat(parameters('sites_AA015_Connector_DocumentDB_Prod_name'),'aa015-connector-documentdb-prod.scm.azurewebsites.net')]",
-                        "sslState": 0,
-                        "thumbprint": null,
-                        "ipBasedSslState": 0
-                    }
-                ],
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_CommonLogicAppPlan01_name'))]"
+                "name": "[parameters('apiAppName')]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appSvcPlanName'))]",
+                 "siteConfig": {
+                    "appSettings": [
+                		 {
+					"Name": "endpoint",
+					"Value": "[reference(concat('Microsoft.DocumentDb/databaseAccounts/', parameters('databaseAccountName'))).documentEndpoint]"
+				}, 
+				{
+					"Name": "authKey",
+					"Value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('databaseAccountName')), '2015-04-08').primaryMasterKey]"
+				},
+				{
+					"Name": "database",
+					"Value": "[parameters('dataBase')]"
+				}
+                    ]
+                }
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_CommonLogicAppPlan01_name'))]"
+                "[resourceId('Microsoft.Web/serverfarms', parameters('appSvcPlanName'))]"
             ]
         }
 		]
