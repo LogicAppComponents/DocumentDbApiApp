@@ -20,7 +20,7 @@ Both the AuthKey (primary API key) and the Endpoint URL for the Document DB inst
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FLogicAppComponents%2FDocumentDbApiApp%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
-</a>    This deploys via Azure Portal (WEB API APP)
+</a>    This deploys via Azure Portal (WEB APP)
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FLogicAppComponents%2FDocumentDbApiApp%2Fmaster%2FazuredeployApiApp.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
@@ -33,7 +33,11 @@ This deploys via Azuredeploy.net GUI -->
 
 <a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/LogicAppComponents/DocumentDbApiApp/master/azuredeploy.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
-</a>
+</a>      Visualizes components (WEB APP)
+
+<a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/LogicAppComponents/DocumentDbApiApp/master/azuredeployApiApp.json" target="_blank">
+    <img src="http://armviz.io/visualizebutton.png"/>
+</a>      Visualizes components (API APP)
 
 ## Remarks ##
 If the required parameters are not set the web app will fail to load, this due to a initial connection is made on startup.
