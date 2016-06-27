@@ -5,12 +5,12 @@ using System.Web.Http.Description;
 using Swashbuckle.Application;
 using Swashbuckle.Swagger;
 using WebActivatorEx;
-using DocumentDBApiApp;
+using DocumentDBConnector;
 
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
-namespace DocumentDBApiApp
+namespace DocumentDBConnector
 {
     public class SwaggerConfig
     {

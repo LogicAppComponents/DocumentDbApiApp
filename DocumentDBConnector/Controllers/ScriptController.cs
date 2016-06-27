@@ -1,11 +1,11 @@
 ﻿
-using DocumentDBApiApp;
+using DocumentDBConnector;
 using Microsoft.Azure.Documents;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace DocumentDBApiApp.Controllers
+namespace DocumentDBConnector.Controllers
 {
     public class ScriptController : ApiController
     {
