@@ -31,13 +31,6 @@ Both the AuthKey (primary API key) and the Endpoint URL for the Document DB inst
 <!--[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/?repository=https://github.com/LogicAppComponents/DocumentDbApiApp/blob/master/azuredeploy.json)
 This deploys via Azuredeploy.net GUI -->
 
-<a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/LogicAppComponents/DocumentDbApiApp/master/azuredeploy.json" target="_blank">
-    <img src="http://armviz.io/visualizebutton.png"/>
-</a>      Visualizes components (WEB APP)
-
-<a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/LogicAppComponents/DocumentDbApiApp/master/azuredeployApiApp.json" target="_blank">
-    <img src="http://armviz.io/visualizebutton.png"/>
-</a>      Visualizes components (API APP)
 
 ## Remarks ##
 If the required parameters are not set the web app will fail to load, this due to a initial connection is made on startup.
