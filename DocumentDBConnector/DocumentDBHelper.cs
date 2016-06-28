@@ -26,10 +26,6 @@ namespace DocumentDBConnector
 
     public static class DocumentDBHelper
     {
-        [ThreadStatic]
-        public static double waitTime = 1000;
-
-        public static double requestCharge;
         public static void Init()
         {
             ReadOrCreateDatabase();
@@ -213,7 +209,7 @@ namespace DocumentDBConnector
             obj.Remove("_etag");
             obj.Remove("_ts");
             obj.Remove("_attachments");
-
+            obj.Remove("_batchguid");
         }
         public class DocumentDBResult
         {
@@ -287,8 +283,11 @@ namespace DocumentDBConnector
                 try
                 {
                     var t = await function();
-                    var status = GetStatusObject(id);                    
-                    status.IncreasRecordsDone();
+                    var status = GetStatusObject(id);
+                    if (status != null)
+                    {
+                        status.IncreasRecordsDone();
+                    }
 
                     return t;
                 }
@@ -343,20 +342,21 @@ namespace DocumentDBConnector
             }            
         }
 
-        public static async void UpsertDocumentSync(string collectionid, object document, Guid id)
+        private class RequestInformation
         {
-            TimeSpan sleepTime = TimeSpan.Zero;
-            var currentcollection = GetCollection(collectionid).DocumentsLink;
-            var status = GetStatusObject(id);
-            while (true)
+            public double RequestCharge;
+        }
+
+        private static async Task<RequestInformation> UpsertDocumentSync(string currentcollection, object document, StatusObject status)
+        {
+            TimeSpan sleepTime = TimeSpan.Zero;            
+            for (int i = 0; i < 100; i++)
             {
                 try
-                {
-                    
+                {                    
                     var res = await Client.UpsertDocumentAsync(currentcollection, document);                    
                     status.IncreasRecordsDone();
-
-                    break;
+                    return new RequestInformation() { RequestCharge = res.RequestCharge };
                 }
                 catch (DocumentClientException de)
                 {
@@ -399,6 +399,7 @@ namespace DocumentDBConnector
 
                 await Task.Delay(sleepTime);
             }
+            return null;
         }
 
 
@@ -406,28 +407,6 @@ namespace DocumentDBConnector
         {
             var currentcollection = GetCollection(collectionid).DocumentsLink;
            
-            //requestCharge = Client.UpsertDocumentAsync(currentcollection, document).Result.RequestCharge;
-            //StatusObject value;
-            //if (conDictionary.TryGetValue(id, out value))
-            //{
-            //    value.reqCharge = requestCharge;
-            //}
-            /* 
-         Offer offer = client.CreateOfferQuery()
-                     .Where(r => r.ResourceLink == GetCollection(collectionid).SelfLink)
-                     .AsEnumerable()
-                     .SingleOrDefault();
-
-         OfferV2 offerV2 = (OfferV2)offer;
-
-
-         int coll = offerV2.Content.OfferThroughput;
-         var ru = coll / requestCharge;
-         var tmpwait = 1000 / ru; //get seconds
-         waitTime = tmpwait; */
-            //tmpwait + tmpwait*0.1;
-            //TODO, fixa tömning av GUID!!
-
             return await ExecuteWithRetries(Client, () => Client.UpsertDocumentAsync(currentcollection, document), id);            
         }
 
@@ -447,20 +426,59 @@ namespace DocumentDBConnector
             StatusObject status = new StatusObject();
             while (!conDictionary.TryAdd(status.id, status)) ;
             status.totalRecords = totalrecords;
+            foreach(var s in conDictionary.Where( s => s.Value.lastUpdate.AddHours(12) < DateTime.Now))
+            {
+                StatusObject obj;
+                conDictionary.TryRemove(s.Key, out obj);
+            }
+
             return status;
         }
 
-        public static async Task<StatusObject> ProcessList(string collection, IEnumerable<dynamic> entites, Guid StatusId)
+        public static async Task<StatusObject> ProcessList(string collection, IEnumerable<dynamic> entites, StatusObject value,string callbackurl = null, int timeouttime=30)
         {
-            var t = Task.Run<StatusObject>(() =>
+            var t = Task.Run<StatusObject>(async () =>
             {
-                foreach (var d in entites)
+
+                string errormsg = "";
+                try
                 {
-                    DocumentDBHelper.UpsertDocumentSync(collection, d, StatusId);
+                    var col = GetCollection(collection);
+                    var currentcollection = col.DocumentsLink;
+                    foreach (var d in entites)
+                    {
+                        d._batchguid = value.id;
+                        
+                        RequestInformation robj = await DocumentDBHelper.UpsertDocumentSync(currentcollection, d, value);
+                    }
                 }
-                StatusObject value;
-                
-                while(!conDictionary.TryGetValue(StatusId, out value));
+                catch(Exception ex)
+                {
+                    errormsg = ex.Message;
+                    if (value != null)
+                        value.errorMsg = ex.Message;
+                }
+
+                if (!string.IsNullOrEmpty(callbackurl))
+                {
+                    //await all done
+                    var exededtime = DateTime.Now.AddMinutes(timeouttime);
+                    if (value != null)
+                    {
+                        while ((value.totalRecords > value.recordsDone + value.errorRecords) && DateTime.Now < exededtime)
+                        {
+                            Thread.Sleep(500);
+                        }
+                    }
+                    else
+                    {
+                        value = new StatusObject(errormsg);
+                    }
+                    var client = new WebClient();
+                    client.Headers[HttpRequestHeader.ContentType] = "application/json";
+                    
+                    string response = client.UploadString(callbackurl, Json.Encode(value));
+                }
                 return value;
             }
             );

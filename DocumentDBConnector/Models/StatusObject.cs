@@ -7,6 +7,16 @@ namespace DocumentDBConnector.Models
 {
     public class StatusObject
     {
+
+        public StatusObject()
+        {
+
+        }
+
+        public StatusObject(string errormsg)
+        {
+            this.errorMsg = errorMsg;
+        }
         private object lockobject = new object();
 
         public Guid id = Guid.NewGuid();

@@ -1,0 +1,88 @@
+[
+        {
+            "id": "us_5506_1B",
+            "data": {
+                "local_id": "1",
+                "links": {
+                    "link": [
+                        {
+                            "rel": "property",
+                            "href": "/properties/us_5506"
+                        },
+                        {
+                            "rel": "country",
+                            "href": "/countries/us"
+                        },
+                        {
+                            "rel": "self",
+                            "href": "/units/us_5506_1B"
+                        }
+                    ]
+                },
+                "unit_number": "1B",
+                "unit_type": "Apartment",
+                "address": {
+                    "street_address": "40 Linden Blvd 1B",
+                    "postal_code": "11226",
+                    "city": "Brooklyn",
+                    "country": "USA"
+                },
+                "purchase_date": 1438560000000,
+                "sale_date": null,
+                "start_date": null,
+                "end_date": null,
+                "building_year": "1937.0000",
+                "upgrade_status": null,
+                "floor": "1.0000",
+                "number_of_rooms": "0",
+                "number_of_bathrooms": "1.000000",
+                "local_room_category": "Studio",
+                "size_sqm": "53.69795720",
+                "size_sqft": "578.000000",
+                "occupancy_status": "Occupied"
+            }
+        },
+        {
+            "id": "us_5506_1D",
+            "data": {
+                "local_id": "2",
+                "links": {
+                    "link": [
+                        {
+                            "rel": "country",
+                            "href": "/countries/us"
+                        },
+                        {
+                            "rel": "self",
+                            "href": "/units/us_5506_1D"
+                        },
+                        {
+                            "rel": "property",
+                            "href": "/properties/us_5506"
+                        }
+                    ]
+                },
+                "unit_number": "1D",
+                "unit_type": "Apartment",
+                "address": {
+                    "street_address": "40 Linden Blvd 1D",
+                    "postal_code": "11226",
+                    "city": "Brooklyn",
+                    "country": "USA"
+                },
+                "purchase_date": 1438560000000,
+                "sale_date": null,
+                "start_date": null,
+                "end_date": null,
+                "building_year": "1937.0000",
+                "upgrade_status": null,
+                "floor": "1.0000",
+                "number_of_rooms": "0",
+                "number_of_bathrooms": "1.000000",
+                "local_room_category": "Studio",
+                "size_sqm": "48.58829000",
+                "size_sqft": "523.000000",
+                "occupancy_status": "Occupied"
+            }
+        }
+    ]

@@ -20,34 +20,44 @@ namespace DocumentDBConnector.Controllers
 {
     public class CollectionController : ApiController
     {
-       
+
 
         // GET: api/DocumentDB
         public IEnumerable<dynamic> Get(string collection, string fields = "value c", string where = "", string join = "")
         {
             var query = new SqlQuerySpec(
-                 "SELECT " + fields + " FROM c " + (string.IsNullOrEmpty(join) ? "" : " JOIN " + join + " ") + (string.IsNullOrEmpty(where) ? "" : " where " +where),
+                 "SELECT " + fields + " FROM c " + (string.IsNullOrEmpty(join) ? "" : " JOIN " + join + " ") + (string.IsNullOrEmpty(where) ? "" : " where " + where),
                  new SqlParameterCollection());
-            return DocumentDBHelper.GetDocuments(collection, query,null).documents;
+            return DocumentDBHelper.GetDocuments(collection, query, null).documents;
 
         }
 
         // GETById: api/DocumentDB/5
         public IEnumerable<dynamic> GetById(string collection, string id, string fields = "value c", string where = "", string join = "")
         {
-            return this.Get(collection, fields, ("c.id = '" + id + "'"),join);
+            return this.Get(collection, fields, ("c.id = '" + id + "'"), join);
         }
-   
+
         [HttpGet]
         [Route("api/status/{id}")]
         // GETByBatch: api/DocumentDB/5
-        public HttpResponseMessage StatusCheck([FromUri] Guid id)
+        public HttpResponseMessage StatusCheck([FromUri] Guid id, string collection = null)
         {
             var status = DocumentDBHelper.GetStatusObject(id);
 
-            if(status == null)
+            if (status == null)
             {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
+                if (!string.IsNullOrEmpty(collection))
+                {
+                    var query = new SqlQuerySpec("select c.id from c where c._batchguid =" + id.ToString(), new SqlParameterCollection());
+                    var docs = DocumentDBHelper.GetDocuments(collection, query, null);
+                    status = new StatusObject();
+                    status.recordsDone = docs.documents.Count();
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound);
+                }
             }
             if (status.totalRecords > status.recordsDone + status.failedRecords)
             {
@@ -66,7 +76,7 @@ namespace DocumentDBConnector.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.Conflict);
             }
-            return Request.CreateResponse(HttpStatusCode.OK,status);
+            return Request.CreateResponse(HttpStatusCode.OK, status);
         }
 
         // PUT: api/DocumentDB/5
@@ -78,11 +88,11 @@ namespace DocumentDBConnector.Controllers
         }
 
         // POST: api/DocumentDB/collection
-        public HttpResponseMessage PostList(string collection, [FromBody] IEnumerable<dynamic> entites)
+        public HttpResponseMessage PostList([FromBody] IEnumerable<dynamic> entites, string collection, string callbackurl = null)
         {
             //dynamic value = System.Web.Helpers.Json.Decode(document);
             var status = DocumentDBHelper.CreateStatusObject(entites.Count());
-            Task<StatusObject> task = DocumentDBHelper.ProcessList(collection, entites, status.id);
+            Task<StatusObject> task = DocumentDBHelper.ProcessList(collection, entites, status, callbackurl);
 
             HttpResponseMessage responseMessage = Request.CreateResponse(HttpStatusCode.Accepted);
 
@@ -104,5 +114,5 @@ namespace DocumentDBConnector.Controllers
             var result = DocumentDBHelper.DeleteDocument(id).GetAwaiter().GetResult();
         }
     }
-   
+
 }
