@@ -94,7 +94,7 @@ namespace DocDbTestClass
         public void PostListMultipleTest()
         {
 
-            string units = System.IO.File.ReadAllText(@"C:\Users\viho\Desktop\akelius\docdb\units.json");
+            string units = System.IO.File.ReadAllText(@"YOUR_FILE_PATH_\units.json");
             var unitsCol = "INT002_units_v1";
             var unitlist = Newtonsoft.Json.JsonConvert.DeserializeObject(units) as IEnumerable<dynamic>;
             var unitstatus = DocumentDBHelper.CreateStatusObject(unitlist.Count());
@@ -115,7 +115,7 @@ namespace DocDbTestClass
 
    
 
-            string rents = System.IO.File.ReadAllText(@"C:\Users\viho\Desktop\akelius\docdb\rents.json");
+            string rents = System.IO.File.ReadAllText(@"YOUR_FILE_PATH_\rents.json");
             var rentsCol = "INT011_rents_v1";
             var rentslist = Newtonsoft.Json.JsonConvert.DeserializeObject(rents) as IEnumerable<dynamic>;
             var rentstatus = DocumentDBHelper.CreateStatusObject(rentslist.Count());
